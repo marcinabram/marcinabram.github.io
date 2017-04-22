@@ -1,13 +1,17 @@
 ---
 layout:    page
 permalink: "/about/"
-author:    jwillmer
 keywords:  about person
 title:     Marcin Abram
 menutitle: O mnie
 weight:    90
 excerpt:   This page contains the curriculum vitae (CV) of the author.
 ---
+
+<center>
+<a href="https://github.com/marcinabram" itemprop="sameAs" class="social-github-circled"></a> 
+<a href="https://linkedin.com/in/marabram/" itemprop="sameAs" class="social-linkedin"></a> 
+</center>
 
 ## Profil
 
@@ -35,3 +39,6 @@ w małej firmie, zajmującej się analizą języka naturalnego.
 
 2006 - 2011
 : Międzywydziałowe Studia Matematyczno-Przyrodnicze ze specjalizacją fizyki teoretycznej (Uniwerstytet Jagielloński)
+
+
+
