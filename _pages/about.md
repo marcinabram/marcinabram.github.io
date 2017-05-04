@@ -17,7 +17,7 @@ excerpt:   This page contains the curriculum vitae (CV) of the author.
 
 W 2016 roku obroniłem doktorat z fizyki teoretycznej na Uniwersytecie Jagiellońskim w Krakowie.
 Następnie przeniosłem się do Londynu, gdzie zacząłem pracę jako inżynier uczenia maszynowego
-w małej firmie, zajmującej się analizą języka naturalnego.
+w małej firmie zajmującej się analizą języka naturalnego.
 
 ## Praca
 
