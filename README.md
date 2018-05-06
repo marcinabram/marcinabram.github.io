@@ -10,3 +10,7 @@ Installation:
 
 To build:
  - `bundle exec jekyll serve`
+
+To test the production:
+ - `JEKYLL_ENV=production bundle exec jekyll serve`
+
