@@ -27,9 +27,11 @@ favicon:
   theme: ffffff
 
 # Build settings
-theme: academic
+markdown: kramdown
+remote_theme: gaalcaras/academic
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
 exclude:
   - jekyll_build.sh
   - Gemfile

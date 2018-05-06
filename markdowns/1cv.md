@@ -6,10 +6,8 @@ permalink: /CV
 invisible: false
 ---
 
-I am theoretical physicist and machine learning engineer.
-I hold a PhD in theoretical physics and a bachelor’s degree in computer science.
-My academic and professional work have been geared toward
-mathematical modeling of complex systems and machine learning algorithms applications.
+I am a theoretical physicist and machine learning engineer. I hold a PhD in theoretical physics and a bachelor’s degree in computer science. My academic and professional involves mathematical modeling of complex systems and applying machine learning algorithms.
+
 
 For a copy of my CV, please click [here (updated May 2018)](/assets/abram_cv.pdf).
 
