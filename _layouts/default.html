@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html lang="{% if page.language %}{{ page.language | downcase }}{% else %}{{ site.language | downcase }}{% endif %}">
-{% include head.html %}
+<html lang="{{ page.lang | default: site.langs[0] | default: "en" }}">
 
-<body class="home-template">
-    <div class="site-wrapper">
-        {% include header.html %}
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    {% if page.layout == "post" %}
+    <main class="post-content" aria-label="Content">
+    {% else %}
+    <main class="page-content" aria-label="Content">
+    {% endif %}
+      <div class="wrapper">
         {{ content }}
-        {% include footer.html %}
-    </div>
-</body>
+      </div>
+    </main>
 
-{% include global.html %}
+    {% include footer.html %}
+
+  </body>
+
 </html>

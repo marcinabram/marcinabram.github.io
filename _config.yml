@@ -1,32 +1,39 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
+# General settings
+title: Marcin Abram
+title_html: "Marcin Abram"
+description:
+  en: theoretical physicist and machine learning engineer
+baseurl: ""
+url: "https://marcinabram.github.io"
 
-# Site settings
-title:            Marcin Abram
-subtitle:         Publiczny blog
-description:      Physics and machine learning
-keywords:         physics, neural networks, machine learning
-language:         "pl" # default language of the blog. Language codes: http://www.w3schools.com/tags/ref_language_codes.asp
+langs: ["en"]
+defaults:
+  - scope:
+      path: ""
+    values:
+      lang: "en"
 
-baseurl:          "" # the subpath of your site, e.g. /blog
-url:              "" # the base hostname & protocol for your site. Have a look at robots.txt as well!
-permalink:        /blog/:categories/:title
-cover:            /assets/mountain-cover.jpg
-disqus_shortname: "https-marcinabram-github-io"
+# Author
+author: Marcin Abram
+
+email: 
+github_username: marcinabram
+linkedin_username: marabram
+author_website: https://marcinabram.github.io
+
+# Favicon
+favicon:
+  safari: 5bbad5
+  theme: ffffff
 
 # Build settings
-markdown: kramdown
-kramdown:
-  syntax_highlighter_opts:
-    disable: true
-include: ['_pages']
-exclude: [vendor]
-gems:
-  - jekyll-mentions
+markdown: redcarpet
+redcarpet:
+  extensions: ["tables", "fenced_code_blocks", "autolink", "footnotes", "with_toc_data"]
+theme: academic
+plugins:
   - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-redirect-from
+exclude:
+  - jekyll_build.sh
+  - Gemfile
+  - Gemfile.lock

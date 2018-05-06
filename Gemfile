@@ -1,11 +1,11 @@
-source 'http://rubygems.org'
+source "https://rubygems.org"
+gemspec
+gem 'jekyll-feed'
+gem 'redcarpet'
 
-gem "jekyll"
-gem "wdm", "~> 0.1.0" if Gem.win_platform?
+gem "github-pages", group: :jekyll_plugins
 
 group :jekyll_plugins do
-    gem 'jekyll-mentions'
-    gem 'jekyll-feed'
-    gem 'jekyll-sitemap'
-    gem 'jekyll-redirect-from'
+  gem 'jekyll-livereload'
+  gem 'jekyll-last-modified-at'
 end

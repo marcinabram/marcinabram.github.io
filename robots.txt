@@ -1,3 +1,2 @@
+Sitemap: https://marcinabram.github.io/sitemap.xml
 User-agent: *
-Disallow:
-Host: http://marcinabram.github.io/jekyllDecent
