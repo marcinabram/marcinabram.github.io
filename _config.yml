@@ -27,9 +27,6 @@ favicon:
   theme: ffffff
 
 # Build settings
-markdown: redcarpet
-redcarpet:
-  extensions: ["tables", "fenced_code_blocks", "autolink", "footnotes", "with_toc_data"]
 theme: academic
 plugins:
   - jekyll-feed
