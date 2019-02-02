@@ -11,16 +11,6 @@ $type-scale-large: (
 );
 
 $type-scale-medium: (
-  h1: 2.319rem,
-  h2: 1.570em,
-  h3: 1.485rem,
-  h4: 1.266rem,
-  p: 1.188rem,
-  small: 1.09rem,
-  vsmall: 0.95rem,
-);
-
-$type-scale-small: (
   h1: 2.197rem,
   h2: 1.488rem,
   h3: 1.407rem,
@@ -28,6 +18,19 @@ $type-scale-small: (
   p: 1.125rem,
   small: 1.035rem,
   vsmall: 0.9rem,
+);
+
+$type-scale-medium: (
+  h1: 1.953rem,
+  h2: 1.322rem,
+  h3: 1.250rem,
+  h4: 1.066rem,
+  p: 1.rem,
+  small: 0.92rem,
+  vsmall: 0.8rem,
+);
+
+$type-scale-small: (
 );
 
 $type-line-large: (
