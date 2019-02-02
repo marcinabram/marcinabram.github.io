@@ -11,4 +11,4 @@ At the university, I taught several undergraduate-level courses, including Stati
 
 I make an effort to be an active member of my local and academic community. I helped with the organization of the PyData London 2018 Conference. I also volunteered as an instructor during the recent Python Data Science Beginners Bootcamp, where I led a session about Natural Language Processing. Last year, I was invited back to my home department to give a talk about machine learning and potential applications to physics research.
 
-Since 2018 I regularly review articles for Journal of Physics: Material (3) and New Journal of Physics (2) related to such topics as an application of machine learning in physics, neural networks, scientific computing, magnetism and novel materials [(cf. my profile on publons)](https://publons.com/researcher/1594724/marcin-abram/).
+Since 2018 I regularly review articles for Journal of Physics: Material and New Journal of Physics related to such topics as an application of machine learning in physics, neural networks, scientific computing, magnetism and novel materials [(cf. my profile on publons)](https://publons.com/researcher/1594724/marcin-abram/).

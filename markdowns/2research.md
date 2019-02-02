@@ -74,6 +74,10 @@ Phys. Rev. B 88, 094502 (2013).
 
 </ul>
 
+### Reviews
+
+Since 2018 I regularly review articles for Journal of Physics: Material and New Journal of Physics related to such topics as an application of machine learning in physics, neural networks, scientific computing, magnetism and novel materials [(cf. my profile on publons)](https://publons.com/researcher/1594724/marcin-abram/).
+
 ### Comercial projects
 
 <ul>
