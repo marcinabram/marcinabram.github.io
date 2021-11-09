@@ -1,10 +1,10 @@
-# ashartnett
+# Personal Page
 
 Source files for personal website, powered by Jekyll.
 
 Installation:
- - install gem (so you can intall ruby packages)
- - intall bundler: `gem install bundler`
+ - install gem (so you can install ruby packages)
+ - install bundler: `gem install bundler`
  - update bundler: `bundle update`
  - install dependencies: `bundle install`
 
@@ -13,4 +13,3 @@ To build:
 
 To test the production:
  - `JEKYLL_ENV=production bundle exec jekyll serve`
-
