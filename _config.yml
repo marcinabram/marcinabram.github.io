@@ -2,7 +2,7 @@
 title: Marcin Abram
 title_html: "Marcin Abram"
 description:
-  en: a Physicist, a Machine Learning Engineer and a Blockchain Research Scientist
+  en: a Physicist and a Machine Learning Researcher
 baseurl: ""
 url: "https://marcinabram.github.io"
 
@@ -16,7 +16,7 @@ defaults:
 # Author
 author: Marcin Abram
 
-email: 
+email:
 github_username: marcinabram
 linkedin_username: marabram
 author_website: https://marcinabram.github.io

@@ -5,20 +5,41 @@ title: Research
 permalink: /research/
 ---
 
+In my doctoral research, I focused on mathematical modeling and numerical method for solving strongly correlated fermion problems. I applied that knowledge to study unconventional superconductivity in strongly correlated materials and for modeling classical and quantum phase transitions in heavy-fermion systems.
 
-In my doctoral research, I focused on mathematical modeling and developing a numerical method for solving strongly correlated fermion problems. In particular, I was responsible for the development of methods and software for estimating the ground state energy of strongly correlated materials and for modeling classical and quantum phase transitions in heavy-fermion systems. In that work, my additional education as a computer scientist proved to be relevant, as my tasks required algorithm optimization, computations at the university’s supercomputer and non-trivial data analysis and interpretation.
-
-My current research agenda includes consensus design (in the context of decentralized protocols), machine learning applications in multi-agent systems, and blockchain governance (both on- and off-chain). In terms of the consensus design, I am one of the main co-author of a novel protocol that aims to limit the one-shot monopoly of round-leaders. This preliminary work shows that the protocol might enhance security by preventing or reducing scale of some attacks (like an <i>undercutting attack</i> or <i>Flash Boys 2.0</i>).
-
-Another project in which I am involved regards applications of machine learning techniques in physics. The goal of that project is to investigate methods that can be used to estimate the physical characteristics of organic molecules. Using a variational autoencoder, it is possible to calculate molecular-embedding and used it to estimate selected physical characteristics of new molecules. We plan to move beyond these initial point estimates to use Bayesian methods to model the uncertainty of these predictions. This development would help researchers search for candidate-molecules with particularly extreme physical properties.
+When working for TypeScore (2016-2018), I was interested in model robustness and the problem of learning from heterogeneous data. When at Fetch.AI (2018-2020), my task was to study the security and robustness of decentralized protocols. I was one of the lead researchers in a group working on consensus algorithms design and applications of machine learning in decentralized systems.
 
 ### Publications
 
 <ul>
 
 <li>
+D. Stripelis, M. Abram, and J.-L. Ambite,
+<i>Performance Weighting for Robust Federated Learning Against Corrupted Sources</i>
+(in preparation).
+</li>
+
+<li>
+M. Abram, K. Burghardt, R. Dingreville, J. A. Stewart, G. Ver Steeg, and A. Galstyan,
+<i>Learning concentration modulation in thin-films via neural modeling of transitional states</i>
+(in preparation).
+</li>
+
+<li>
+Y. Yao, C. Cao, D. Khanna, M. Agarwal, S. Haas, and M. Abram,
+<i>Emulating quantum dynamics with neural networks via knowledge distillation</i>
+(in preparation).
+</li>
+
+<li>
 M. Abram, D. Honerkamp, J. Ward, J.-M. Wong,
-<i>Democratising blockchain: A minimal agency consensus model (2019)</i>, presented as working paper at <a href="http://tokenomics2019.org">Tokenomics 2019</a>.
+<i>Democratising blockchain: A minimal agency consensus model (2019)</i>, presented as working paper at <a href="http://tokenomics2019.org">Tokenomics 2019</a>, see the preprint at <a href="https://arxiv.org/abs/2006.05390">
+https://arxiv.org/abs/2006.05390</a>.
+</li>
+
+<li>
+Y. Ye, D. Qiu, J. Ward, and M. Abram,
+<i>Model-free real-time autonomous energy management for a residential multi-carrier energy system: A deep reinforcement learning approach</i>, <a href="https://doi.org/10.24963/ijcai.2020/48">Proceedings of the Twenty-Ninth International Joint Conference on Artificial Intelligence (IJCAI) (2020).</a>
 </li>
 
 <li>
@@ -83,15 +104,25 @@ Phys. Rev. B 88, 094502 (2013).
 
 ### Service
 
-Since 2018 I regularly review articles for <i>Journal of Physics: Material</i>, <i>Journal of Physics: Condensed Matter</i>, <i>New Journal of Physics</i> and <i>Physica Scripta</i> related to such topics as an application of machine learning in physics, neural networks, scientific computing, magnetism and novel materials [(cf. my profile on publons)](https://publons.com/researcher/1594724/marcin-abram/).
+Since 2018 I regularly review articles for
+ <i>New Journal of Physics</i>,
+ <i>Journal of Physics: Material</i>,
+ <i>Journal of Physics: Condensed Matter</i>,
+ <i>Physica Scripta</i>,
+ <i>Machine Learning: Science and Technology</i>,
+ <i>IOP SciNotes</i>,
+ and <i>Superconductor Science and Technology</i>.
+In 2020, I was awarded the <i>Outstanding Reviewer</i> title by the IOP Journal of Physics: Condensed Matter.
 
 ### Comercial projects
 
 <ul>
 
 <li>
-<i>Open Risk Exchange (ORX) portal</i>, the first online portal offering free credit scores for businesses in the United Kingdom. The score is built with help of complex statistical modelling and machine learning algorithms combined with a wide variety of structured and unstructured data sources.
+<i>Open Risk Exchange (ORX) portal</i>, the first online portal offering free credit scores for businesses in the United Kingdom. The score is built with help of complex statistical modeling and machine learning algorithms combined with a wide variety of structured and unstructured data sources.
+</li>
+<li>
+<i>A minimal agency consensus model</i>. I am one of the main co-authors of a novel protocol that aims to limit the one-shot monopoly of round-leaders. The protocol was designed to offer a high throughput while reducing the scale of some attacks that traditional blockchains are prone to (like an <i>undercutting attack</i> or <i>Flash Boys 2.0</i>).
 </li>
 
 </ul>
-
