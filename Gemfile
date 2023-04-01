@@ -3,6 +3,8 @@ gemspec
 gem 'jekyll-feed'
 gem 'kramdown'
 gem "jekyll-remote-theme"
+gem 'faraday-retry'
+gem 'webrick'
 
 gem "github-pages", group: :jekyll_plugins
 
