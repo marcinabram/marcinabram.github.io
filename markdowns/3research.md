@@ -134,3 +134,6 @@ I am one of the main co-authors of <a href="https://data.epo.org/publication-ser
 </li>
 
 </ul>
+
+To learn more about my research and work experience, check <a href="../CV">the CV section</a> of this website.
+

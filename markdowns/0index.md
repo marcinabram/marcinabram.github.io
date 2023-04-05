@@ -18,6 +18,8 @@ In my current role, I leverage my background in physics and machine learning to 
  3. **Research on novel protocols for federated learning.**
  Finally, I am also a research member of the SHELFI project (part of the DARPA Cooperative Secure Learning initiative). In this project, I focus on improving the quality of federated training procedures in a limit of a non-IID data distribution and with a presence of honest-but-forgetful participants. Through the development of an elastic-weight consolidation schema, my team and I demonstrated improved accuracy compared to a baseline approach that simply ignores corrupted updates. Through this work, my research aims to understand the fundamental aspects of machine learning models' learning processes, including how knowledge is stored and combined, and how to efficiently learn from noisy or partially corrupted examples. <a href="https://arxiv.org/abs/2205.01184">A pre-print describing this work is available at arXiv</a>.
 
+To learn more about my work history, check the <a href="../experience">Work Experience</a> tab or visit the <a href="../CV">CV section</a>.
+
 
 <!--
 Currently, I work as a Postdoctoral Scholar - Teaching Fellow at the University of Southern California (USC) and I hold a secondary role as a Visiting Researcher at the Information Sciences Institute (ISI). My research focuses on developing novel federated training protocols and exploring applications of machine learning in scientific concept discovery. My work also considers critical questions around AI safety, model robustness, and neural network interpretability, reflecting my commitment to ethical and responsible AI.

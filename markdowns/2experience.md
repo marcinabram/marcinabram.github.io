@@ -41,4 +41,4 @@ and presented the results of my work at several international conferences (see t
 I led practical sessions for Physics with Biophysics Elements, Statistical Physics, and Physics Laboratory,
 and for several years, I was the main organizer of the Physics Classes for Gifted High-School Students outreach program.
 
-To learn more details, see <a href="../CV">my CV section</a>.
+To learn more about my research and teaching experience, check the <a href="../research">research</a> or the <a href="../teaching">teaching</a> sections of this website.
