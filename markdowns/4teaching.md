@@ -21,13 +21,13 @@ Since then, I had an opportunity of teaching both small and large courses at uni
 The student evaluated my classes at 4.88/5.0 in 2013 and 4.97/5.0 in 2014, with the annual university averages being 4.40 and 4.36 respectively.
 -->
 
-At the University of Southern California, I have taught a variety of courses including PHYS-304 <i>Mechanics</i>, DSCI-552 <i>Machine Learning for Data Science</i>, PHYS-151 <i>Fundamentals of Physics I: Mechanics and Thermodynamics</i> (a class of 120 students), and PHYS-316 <i>Thermodynamics and Statistical Mechanics</i>. Given my unique background in physics and computer science, I have also supervised several senior projects for Physics/Computer Science majors in my department.
+At the University of Southern California, I have taught a variety of courses including PHYS-304 <i>Mechanics</i>, DSCI-552 <i>Machine Learning for Data Science</i>, PHYS-151 <i>Fundamentals of Physics I: Mechanics and Thermodynamics</i> (a class of 120 students), PHYS-316 <i>Thermodynamics and Statistical Mechanics</i>, and PHYS-408 <i>Electricity and Magnetism</i>. Given my unique background in physics and computer science, I have also supervised several senior projects for Physics/Computer Science majors in my department.
 
 <!--
 At the University of Southern California, for three consecutive years I taught PHYS-304 <i>Mechanics</i>, an upper-division undergraduate class that can be regarded as an introduciton to theoretical physics. In addition to that, in 2021 I taught DSCI-552 <i>Machine Learning for Data Science</i>, in 2022 PHYS-151 <i>Fundamentals of Physics I: Mechanics and Thermodynamics</i>, and in 2023 PHYS-316 <i>Thermodynamics and Statistical Mechanics</i>. Given my unique experience, combining physics and computer science, I also supervised a number of senior projects from Physics/Computer Science majors.
 -->
 
-For detail information, check the teaching section in [my curriculum vitae (updated April 2023)](/assets/abram_cv.pdf).
+For detail information, check the teaching section in [my curriculum vitae](/assets/abram_cv.pdf).
 
 <center>
 <a href="/assets/abram_cv.pdf" rel="Abram CV" style="text-decoration: none">

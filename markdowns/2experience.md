@@ -5,11 +5,11 @@ title: Work Experience
 permalink: /experience/
 ---
 
-With a Ph.D. in theoretica/computational physics and an additional B.Sc. in computer science, I have 4 years of experience as a machine learning engineer and scientist in the industry, followed by 3 years of postdoctoral research.
+With a Ph.D. in theoretica/computational physics and an additional B.Sc. in computer science, I have 4 years of experience as a machine learning engineer and scientist in the industry, followed by 4 years of postdoctoral research.
 My training and work experience are in computational methods, machine learning, distributed and decentralized protocols, as well as statistical and quantum physics.
 My empirical interests lie in interdisciplinary applications of machine learning and physics.
 
-Currently, I'm working as a Postdoctoral Scholar -- Teaching Fellow at the University of Southern California (USC) and a Visiting Researcher at the Information Sciences Institute (ISI) (see <a href="../">the main page for details</a>).
+Currently, I'm working as a Visiting Assistant Professor at the University of Southern California (USC) and a Visiting Researcher at the Information Sciences Institute (ISI) (see <a href="../">the main page for details</a>).
 
 In my prior role as a Lead Research Scientist at Fetch.ai, I focused on ensuring the stability and security of decentralized systems. My team consisted
 of four researchers, and our primary responsibility was to design a new consensus protocol with high throughput and robust security guarantees, while analyzing potential

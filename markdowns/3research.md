@@ -18,6 +18,13 @@ When working at USC, my main focus was on developing novel federated training pr
 <ul>
 
 <li>
+X. Li, H. Tang, S. Chen, Z. Wang, A. Maravi and M. Abram,
+<i>Context Matters: Data-Efficient Augmentation of Large Language Models for Scientific Applications</i>,
+<a href="https://arxiv.org/abs/2312.07069">arXiv:<b>2312.07069</b> (2023)</a>.
+
+</li>
+
+<li>
 D. Stripelis, M. Abram, and J.-L. Ambite,
 <i>Performance weighting for robust federated learning against corrupted sources</i>,
 <a href="https://arxiv.org/abs/2205.01184">arXiv:<b>2205.01184</b> (2022)</a>.
