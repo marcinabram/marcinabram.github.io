@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Publications · Marcin Abram</title>
+  <meta name="description" content="Publications and patent of Marcin Abram: machine learning, decentralized systems, and condensed matter physics.">
+  <link rel="canonical" href="https://marcinabram.github.io/publications.html">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <!-- Google tag. It loads only on the live site, so local previews are not counted.
+       If the site moves to its own domain, change the host name below on every page. -->
+  <script>
+    if (location.hostname === 'marcinabram.github.io') {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-KKSZ3LXK';
+      document.head.appendChild(tag);
+    }
+  </script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="name"><a href="index.html">Marcin Abram</a></p>
+    <nav aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="publications.html" aria-current="page">Publications</a>
+      <a href="notes.html">Notes</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+</div>
+
+<div class="art slim" aria-hidden="true"></div>
+
+<div class="wrap">
+  <main>
+
+  <h1 class="page-title">Publications</h1>
+  <p class="page-lede">
+    Ten peer-reviewed articles, six working papers, a book chapter, and a patent. Citation
+    counts are on <a href="https://scholar.google.com/citations?user=YGo2wbYAAAAJ&amp;hl=en">Google Scholar</a>.
+  </p>
+
+  <!--
+    To add a paper, copy one <li> block and edit it:
+      .title    the title
+      .authors  the author list as published
+      .venue    journal or archive reference, linked
+      .about    optional: one sentence on what the paper shows
+    Add it to cv.html as well.
+  -->
+
+  <section class="band" id="ml">
+    <div class="band-head">
+      <h2>Machine learning</h2>
+      <p>2020 to 2026</p>
+    </div>
+    <div class="band-body">
+      <ul class="pubs">
+        <li>
+          <span class="title">Emergent inference-time semantic contamination via in-context priming</span>
+          <span class="authors">M. Abram</span>
+          <span class="venue"><a href="https://arxiv.org/abs/2604.04043">arXiv:2604.04043</a> (2026)</span>
+          <span class="about">Five culturally loaded numbers given as few-shot examples shift a capable model's answers to an unrelated prompt toward darker themes. A smaller model does not shift.</span>
+        </li>
+        <li>
+          <span class="title">Toward evaluation frameworks for multi-agent scientific AI systems</span>
+          <span class="authors">M. Abram</span>
+          <span class="venue"><a href="https://arxiv.org/abs/2603.26718">arXiv:2603.26718</a> (2026)</span>
+          <span class="about">How to benchmark scientific agents when retrieval can pass for reasoning, training data is contaminated, and novel problems have no ground truth. Includes a dataset of new research ideas and interviews with researchers in quantum science.</span>
+        </li>
+        <li>
+          <span class="title">Why does in-context learning fail sometimes? Evaluating in-context learning on open and closed questions</span>
+          <span class="authors">X. Li, H. Tang, S. Chen, Z. Wang, R. Chen, M. Abram</span>
+          <span class="venue"><a href="https://arxiv.org/abs/2407.02028">arXiv:2407.02028</a> (2024)</span>
+          <span class="about">A context closely aligned with the topic does not always help more than a loosely related one, especially for open, difficult, or novel questions.</span>
+        </li>
+        <li>
+          <span class="title">Context matters: data-efficient augmentation of large language models for scientific applications</span>
+          <span class="authors">X. Li, H. Tang, S. Chen, Z. Wang, A. Maravi, M. Abram</span>
+          <span class="venue"><a href="https://arxiv.org/abs/2312.07069">arXiv:2312.07069</a> (2023)</span>
+          <span class="about">The relation between the relevance of a context and the quality of the answer is not linear.</span>
+        </li>
+        <li>
+          <span class="title">Emulating quantum dynamics with neural networks via knowledge distillation</span>
+          <span class="authors">Y. Yao, C. Cao, S. Haas, M. Agarwal, D. Khanna, M. Abram</span>
+          <span class="venue"><a href="https://doi.org/10.3389/fmats.2022.1060744">Frontiers in Materials 9, 1060744</a> (2023)</span>
+          <span class="about">An emulator trained on a curriculum of simple examples generalizes to wave packets and potentials it has not seen.</span>
+        </li>
+        <li>
+          <span class="title">Inferring topological transitions in pattern-forming processes with self-supervised learning</span>
+          <span class="authors">M. Abram, K. Burghardt, G. Ver Steeg, A. Galstyan, R. Dingreville</span>
+          <span class="venue"><a href="https://doi.org/10.1038/s41524-022-00889-2">npj Computational Materials 8, 205</a> (2022)</span>
+          <span class="about">The uncertainty of a network trained on the inverse problem marks where a material's microstructure changes regime, with no labels.</span>
+        </li>
+        <li>
+          <span class="title">Performance weighting for robust federated learning against corrupted sources</span>
+          <span class="authors">D. Stripelis, M. Abram, J. L. Ambite</span>
+          <span class="venue"><a href="https://arxiv.org/abs/2205.01184">arXiv:2205.01184</a> (2022)</span>
+          <span class="about">Weighting each participant by measured performance keeps a federation useful when some participants train on corrupted labels.</span>
+        </li>
+        <li>
+          <span class="title">Model-free real-time autonomous energy management for a residential multi-carrier energy system: a deep reinforcement learning approach</span>
+          <span class="authors">Y. Ye, D. Qiu, J. Ward, M. Abram</span>
+          <span class="venue"><a href="https://doi.org/10.24963/ijcai.2020/48">Proceedings of IJCAI 2020, pp. 339–346</a></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="band" id="decentralized">
+    <div class="band-head">
+      <h2>Decentralized systems</h2>
+      <p>2019 to 2026</p>
+    </div>
+    <div class="band-body">
+      <ul class="pubs">
+        <li>
+          <span class="title">Distributed computer system and method of operation thereof</span>
+          <span class="authors">J. Ward, M. Abram, D. Honerkamp</span>
+          <span class="venue">US Patent 12,749,011. Filed in June 2021 with a priority date of June
+            2020, granted on 29 September 2026. The application was published as
+            <a href="https://patents.google.com/patent/US20230316127A1/en">US 2023/0316127 A1</a> (2023),
+            <a href="https://patents.google.com/patent/EP3929742A1/en">EP 3929742 A1</a>, and
+            <a href="https://patents.google.com/patent/WO2021260517A1/en">WO 2021/260517 A1</a> (2021)</span>
+          <span class="about">Collective learning without a central coordinator. Worker nodes are grouped into clusters, each cluster trains a model on its own ledger without sharing raw data, and a main ledger coordinates the whole.</span>
+        </li>
+        <li>
+          <span class="title">Democratising blockchain: a minimal agency consensus model</span>
+          <span class="authors">M. Abram, D. Galindo, D. Honerkamp, J. Ward, J.-M. Wong</span>
+          <span class="venue">Presented at Tokenomics 2019, Paris. <a href="https://arxiv.org/abs/2006.05390">arXiv:2006.05390</a> (2020)</span>
+          <span class="about">A consensus protocol that combines a directed acyclic graph with a chain of blocks, so that blocks are built collectively and no round leader can reorder or withhold transactions.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="band" id="physics">
+    <div class="band-head">
+      <h2>Condensed matter physics</h2>
+      <p>2013 to 2024</p>
+    </div>
+    <div class="band-body">
+      <ul class="pubs">
+        <li>
+          <span class="title">Hofstadter butterflies in topological insulators</span>
+          <span class="authors">L. Li, M. Abram, A. Prem, S. Haas</span>
+          <span class="venue">Chapter in <i>Recent Topics on Topology: From Classical to Modern Applications</i>, <a href="https://doi.org/10.5772/intechopen.1006115">IntechOpen</a> (2024)</span>
+        </li>
+        <li>
+          <span class="title">Antiferromagnetism, charge density wave, and d-wave superconductivity in the extended t–J–U model: role of intersite Coulomb interaction and a critical overview of renormalized mean field theory</span>
+          <span class="authors">M. Abram, M. Zegrodnik, J. Spałek</span>
+          <span class="venue"><a href="https://doi.org/10.1088/1361-648X/aa7a21">Journal of Physics: Condensed Matter 29, 365602</a> (2017)</span>
+        </li>
+        <li>
+          <span class="title">Tricritical wings in UGe<sub>2</sub>: a microscopic interpretation</span>
+          <span class="authors">M. Abram, M. M. Wysokiński, J. Spałek</span>
+          <span class="venue"><a href="https://doi.org/10.1016/j.jmmm.2015.07.017">Journal of Magnetism and Magnetic Materials 400, 27</a> (2016)</span>
+        </li>
+        <li>
+          <span class="title">Criticalities in the itinerant ferromagnet UGe<sub>2</sub></span>
+          <span class="authors">M. M. Wysokiński, M. Abram, J. Spałek</span>
+          <span class="venue"><a href="https://doi.org/10.1103/PhysRevB.91.081108">Physical Review B 91, 081108(R)</a> (2015)</span>
+        </li>
+        <li>
+          <span class="title">Ferromagnetism in UGe<sub>2</sub>: a microscopic model</span>
+          <span class="authors">M. M. Wysokiński, M. Abram, J. Spałek</span>
+          <span class="venue"><a href="https://doi.org/10.1103/PhysRevB.90.081114">Physical Review B 90, 081114(R)</a> (2014)</span>
+        </li>
+        <li>
+          <span class="title">t–t′–J–U model in mean-field approximation: coexistence of superconductivity and antiferromagnetism</span>
+          <span class="authors">M. Abram</span>
+          <span class="venue"><a href="https://doi.org/10.12693/APhysPolA.126.A-25">Acta Physica Polonica A 126, A-25</a> (2014)</span>
+        </li>
+        <li>
+          <span class="title">Model of hard spheroplatelets near a hard wall</span>
+          <span class="authors">A. Kapanowski, M. Abram</span>
+          <span class="venue"><a href="https://doi.org/10.1103/PhysRevE.89.062503">Physical Review E 89, 062503</a> (2014)</span>
+        </li>
+        <li>
+          <span class="title">d-wave superconductivity and its coexistence with antiferromagnetism in the t–J–U model: statistically consistent Gutzwiller approach</span>
+          <span class="authors">M. Abram, J. Kaczmarczyk, J. Jędrak, J. Spałek</span>
+          <span class="venue"><a href="https://doi.org/10.1103/PhysRevB.88.094502">Physical Review B 88, 094502</a> (2013)</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="band" id="reviewing">
+    <div class="band-head">
+      <h2>Reviewing</h2>
+    </div>
+    <div class="band-body prose">
+      <p>
+        I review for Machine Learning: Science and Technology, New Journal of Physics, Journal
+        of Physics: Condensed Matter, Journal of Physics: Materials, Superconductor Science and
+        Technology, Physica Scripta, and IOP SciNotes. In 2020, the Journal of Physics: Condensed
+        Matter named me an Outstanding Reviewer, an award given to about one percent of its
+        reviewers.
+      </p>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="foot">
+    <p>Marcin Abram · Los Angeles · Updated November 2026</p>
+    <p>
+      <a href="mailto:abram.mj@gmail.com">abram.mj@gmail.com</a>
+      <a href="https://scholar.google.com/citations?user=YGo2wbYAAAAJ&amp;hl=en">Google Scholar</a>
+      <a href="https://github.com/marcinabram">GitHub</a>
+      <a href="https://www.linkedin.com/in/marabram/">LinkedIn</a>
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

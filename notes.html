@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notes · Marcin Abram</title>
+  <meta name="description" content="Notes by Marcin Abram: single findings from his own experiments with language models, LLM judges, and agents.">
+  <link rel="canonical" href="https://marcinabram.github.io/notes.html">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <!-- Google tag. It loads only on the live site, so local previews are not counted.
+       If the site moves to its own domain, change the host name below on every page. -->
+  <script>
+    if (location.hostname === 'marcinabram.github.io') {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-KKSZ3LXK';
+      document.head.appendChild(tag);
+    }
+  </script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="name"><a href="index.html">Marcin Abram</a></p>
+    <nav aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="publications.html">Publications</a>
+      <a href="notes.html" aria-current="page">Notes</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+</div>
+
+<div class="art slim" aria-hidden="true"></div>
+
+<div class="wrap">
+  <main>
+
+  <h1 class="page-title">Notes</h1>
+  <p class="page-lede">
+    Short findings from my experiments with LLM judges and agents.
+  </p>
+
+  <!--
+    HOW TO ADD OR CHANGE A NOTE
+
+    1. Copy one whole <article class="note"> ... </article> block and paste it
+       above the first one (newest first).
+    2. Give it a new id (lower case, hyphens), a title, a month and the text.
+    3. Add a line with the same id to the list in <nav class="toc"> below.
+
+    A note is one finding, a few short paragraphs and at most one plot. The two
+    kinds of plot used here are plain tables; change the numbers in the --v
+    values and in the text next to them. README.md has the details.
+  -->
+
+  <div class="notes">
+
+    <nav class="toc" aria-label="Notes on this page">
+      <ul>
+        <li><a href="#planted-errors">Planted errors are the easy case</a></li>
+        <li><a href="#judge-question">What you ask a judge decides what it finds</a></li>
+        <li><a href="#judge-size">For an LLM judge, size may matter more than family</a></li>
+      </ul>
+    </nav>
+
+    <div>
+
+      <!-- ============================================================ -->
+
+      <article class="note" id="planted-errors">
+        <h2>Planted errors are the easy case</h2>
+        <p class="date">November 2026</p>
+
+        <p>
+          I wanted to know whether a frontier model pushes back or stops when the plan in front of it
+          contains an error. To test this, I took a sound plan, reversed
+          a prediction or a sign, and measured whether the assistant pushed back or continued. I did this for 40
+          plans.
+        </p>
+        <p>
+          Without any special instruction, gpt-6.1-sol named the planted error
+          in 39 of the 40 cases, often just mitigating the problem by using careful language (hedging),
+          and then went on to the next step anyway, every time. So I
+          added a rule to its instructions: do not build on a statement you believe to be
+          false. With the rule, it stopped on all 40 plans. Sounds good.
+        </p>
+        <p>
+          Then I tried the same rule on 148 real plans, each with a problem that the judges
+          had found and that nobody had planted.
+        </p>
+
+        <figure class="fig">
+          <figcaption>Cases in which the assistant stopped, with the rule in place</figcaption>
+          <table class="bars" style="--max: 100">
+            <tr>
+              <th scope="row">Plans with a planted error</th>
+              <td><span class="t"><i style="--v: 100"></i><b>40 of 40</b></span></td>
+            </tr>
+            <tr class="hl">
+              <th scope="row">Plans with a real problem</th>
+              <td><span class="t"><i style="--v: 4.7"></i><b>7 of 148</b></span></td>
+            </tr>
+          </table>
+        </figure>
+
+        <p>
+          As we can see, it only stopped on 7 of the 148 plans with a real problem!
+        </p>
+        <p>
+          The planted errors were textbook-level. Take something, reverse the prediction or the sign. Obvious problems.
+          A model can show them to be false from the text alone. The real ones needed knowledge of the field, or an estimate of
+          whether a calculation is feasible at all.
+        </p>
+        <p>
+          I still plant errors. They are cheap, and the ground truth is certain. But a test
+          suite built only from them will overstate any fix. So plant with care.
+        </p>
+      </article>
+
+      <!-- ============================================================ -->
+
+      <article class="note" id="judge-question">
+        <h2>What you ask a judge decides what it finds</h2>
+        <p class="date">October 2026</p>
+
+        <p>
+          I constructed a panel of three model judges and asked them to read research plans that gpt-6.1-sol had written for
+          computational studies in physics. Asked to list every false statement, the panel
+          found a serious error in at most 3% of the plans, whichever way I combined the
+          votes. Sounds good.
+        </p>
+        <p>
+          Then I changed the question. Each judge also had to say whether every planned step
+          can deliver what the plan needs from it. Now the panel found a serious problem in
+          30% of the plans. Sounds bad.
+        </p>
+
+        <figure class="fig">
+          <figcaption>Plans by gpt-6.1-sol in which the panel found a serious problem</figcaption>
+          <table class="bars" style="--max: 40">
+            <tr>
+              <th scope="row">The judges list false statements</th>
+              <td><span class="t"><i style="--v: 3"></i><b>0 to 3%</b></span></td>
+            </tr>
+            <tr class="hl">
+              <th scope="row">The judges also ask whether each step can work</th>
+              <td><span class="t"><i style="--v: 30"></i><b>30%</b></span></td>
+            </tr>
+          </table>
+          <p class="src">The first number is from 160 plans and the second from 47, so the two sets are not the same.</p>
+        </figure>
+
+        <p>
+          Why such a discrepancy? The answer is simple. It is easier to mitigate the problem by
+          changing the language to be more careful than to fix the underlying problem (which might be nontrivial).
+        </p>
+        <p>
+          Almost all of the problems were related to feasibility. Here is what a typical case looks
+          like. The request asks for a simulation that is known to be far too expensive at
+          the requested temperature. The model does not repeat the request blindly. It
+          writes a careful plan, adds a sentence such as “the sign problem may prevent a
+          conclusion,” and keeps the infeasible run in the plan. Nothing in the plan is
+          false. The run still cannot work.
+        </p>
+        <p>
+          I want to be fair to the model. A hedged plan is better than a plainly wrong one.
+          But the hedge changes how the plan reads more than what it will do, and a judge
+          that only looks for false statements rewards exactly that. In my work, I also observed
+          that when the same model judged its own plans, it defended the hedge every time
+          (it upheld none of 21 objections), while two judges from another family upheld 11
+          of the 21.
+        </p>
+        <p>
+          Now, before I trust a low error rate, I
+          read the question the judge was asked. And I always use cross-family judges (or a panel of them).
+          The cost of verification is usually lower than the cost of generation (and each problem caught can save a lot in the cost of a prevented run).
+        </p>
+      </article>
+
+
+      <!-- ============================================================ -->
+
+      <article class="note" id="judge-size">
+        <h2>For an LLM judge, size may matter more than family</h2>
+        <p class="date">September 2026</p>
+
+        <p>
+          When I use a language model to judge the output of another model, I add a second
+          judge from a different vendor. The usual argument is that models from different
+          families make different mistakes. However, I wanted to see how much of the disagreement
+          between judges comes from the family versus, for example, the size of the model.
+        </p>
+        <p>
+          I took a small and a large model from each of two families: gpt-6-luna and
+          gpt-6.1-sol from OpenAI, Claude Haiku 5.5 and Claude Opus 5.5 from Anthropic. All
+          four judged the same 972 pairs of texts, with the same question for each pair:
+          which of the two uses more jargon, as seen by a scientist from another subfield?
+          A judge could also answer that it cannot tell.
+        </p>
+
+        <figure class="fig">
+          <figcaption>Share of the 972 pairs on which two judges gave the same verdict</figcaption>
+          <table class="dots" style="--min: 70; --max: 90">
+            <tr class="hl">
+              <th scope="row">Both large, different families
+                <small>gpt-6.1-sol and Claude Opus 5.5</small></th>
+              <td><span class="t" style="--v: 86"><i></i><b>86%</b></span></td>
+            </tr>
+            <tr>
+              <th scope="row">Same family, different size
+                <small>gpt-6-luna and gpt-6.1-sol</small></th>
+              <td><span class="t" style="--v: 80"><i></i><b>80%</b></span></td>
+            </tr>
+            <tr>
+              <th scope="row">Different family and size
+                <small>gpt-6-luna and Claude Opus 5.5</small></th>
+              <td><span class="t" style="--v: 78"><i></i><b>78%</b></span></td>
+            </tr>
+            <tr>
+              <th scope="row">Both small, different families
+                <small>gpt-6-luna and Claude Haiku 5.5</small></th>
+              <td><span class="t" style="--v: 76"><i></i><b>76%</b></span></td>
+            </tr>
+            <tr>
+              <th scope="row">Different family and size
+                <small>Claude Haiku 5.5 and gpt-6.1-sol</small></th>
+              <td><span class="t" style="--v: 76"><i></i><b>76%</b></span></td>
+            </tr>
+            <tr>
+              <th scope="row">Same family, different size
+                <small>Claude Haiku 5.5 and Claude Opus 5.5</small></th>
+              <td><span class="t" style="--v: 74"><i></i><b>74%</b></span></td>
+            </tr>
+            <tr class="scale" aria-hidden="true">
+              <th></th>
+              <td><span class="ends"><span>70%</span><span>90%</span></span></td>
+            </tr>
+          </table>
+        </figure>
+
+        <p>
+          You can see that the two large judges agreed with each other most often, although they come from
+          different vendors. A large and a small judge from the same family agreed no more
+          often than two judges that had nothing in common. The two small judges agreed
+          on 76% of the pairs, no higher than a small and a large judge from different families. It looks as if each
+          small judge is noisy in its own way.
+        </p>
+        <p>
+          So my working hypothesis is that two large models from different families are now
+          more alike than a large and a small model from the same family. It is a hypothesis,
+          not a claim: this is one task and four judges. An alternative explanation is that the two large judges
+          can simply find some problems that the smaller ones cannot, and this makes them seemingly more similar.
+          As always in science, each experiment creates more questions. I hope to run a follow-up study soon.
+        </p>
+        <p>
+          The family still matters for other things. I also observed that judges from
+          different families are calibrated differently (what one calls a serious error, the
+          other lets pass), that some say much more than others, and that one judge was more
+          lenient with text written by a model of its own family, while the other was not.
+          This creates a challenge. If your application can generate text with models from different families,
+          you need to make sure that the judges are calibrated to the same standard. Otherwise, in one of the configurations,
+          you might get a much higher error rate than in the other, not reflecting the actual quality of the output.
+        </p>
+      </article>
+
+
+    </div>
+  </div>
+
+  </main>
+
+  <footer class="foot">
+    <p>Marcin Abram · Los Angeles · Updated November 2026</p>
+    <p>
+      <a href="mailto:abram.mj@gmail.com">abram.mj@gmail.com</a>
+      <a href="https://scholar.google.com/citations?user=YGo2wbYAAAAJ&amp;hl=en">Google Scholar</a>
+      <a href="https://github.com/marcinabram">GitHub</a>
+      <a href="https://www.linkedin.com/in/marabram/">LinkedIn</a>
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,2 +1,0 @@
-Sitemap: https://marcinabram.github.io/sitemap.xml
-User-agent: *

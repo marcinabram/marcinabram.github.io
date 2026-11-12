@@ -1,0 +1,494 @@
+/*
+  Marcin Abram, personal site.
+  One stylesheet. No build step, no JavaScript.
+
+  Contents
+    1. Tokens (colours, type, widths)
+    2. Base
+    3. Header and footer
+    4. Header image, name and portrait
+    5. Home: the roles, with what I researched, built and led
+    6. Home: links to the other pages
+    7. Sections with a heading column (work, publications, teaching)
+    8. Figures: bar chart, dot chart, tables, schematic
+    9. Lists: publications, rows with a date column, the CV
+   10. Notes page
+   11. Narrow screens
+   12. Print (the CV)
+*/
+
+
+/* 1. Tokens ---------------------------------------------------------------- */
+
+:root {
+  --font-serif: "Source Serif 4", Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --bg: #ffffff;
+  --ink: #11151a;        /* text */
+  --ink-2: #1e2329;      /* text in tables and figures */
+  --muted: #39404a;      /* small print: dates, captions */
+  --rule: #d9dde3;       /* hairlines */
+  --axis: #b9bfc8;       /* chart baselines */
+  --mark: #b4bbc5;       /* chart marks that are context */
+  --link: #1c5cab;       /* the one accent, for text */
+  --series-1: #2a78d6;   /* the accent, for marks */
+  --tint: #e6edf6;       /* surface behind the header image and the table head */
+  --deep: #17305a;       /* the header image itself */
+
+  --page: 70rem;         /* outer width */
+  --head-col: 13rem;     /* width of the heading column */
+  --axis-x: 20rem;       /* home page: distance from the left edge to the line the bold words start on */
+  --gap: 3.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171b;
+    --ink: #f1f0ec;
+    --ink-2: #e4e2dc;
+    --muted: #c8c6bf;
+    --rule: #31353b;
+    --axis: #474c53;
+    --mark: #535961;
+    --link: #8dbaf0;
+    --series-1: #3987e5;
+    --tint: #1a2331;
+    --deep: #6d93c9;
+  }
+}
+
+
+/* 2. Base ------------------------------------------------------------------ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.03rem;
+  line-height: 1.6;
+}
+
+.wrap { max-width: var(--page); margin: 0 auto; padding: 0 2rem; }
+
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--series-1); outline-offset: 2px; }
+
+h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; line-height: 1.2; margin: 0; text-wrap: balance; }
+p { margin: 0 0 1rem; text-wrap: pretty; }
+sup, sub { font-size: 0.72em; line-height: 0; }
+.nowrap { white-space: nowrap; }
+.muted { color: var(--muted); }
+
+
+/* 3. Header and footer ----------------------------------------------------- */
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding: 1.75rem 0 0;
+}
+.top.home { justify-content: flex-end; }   /* the home page shows the name in its heading instead */
+.top .name { margin: 0; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; }
+.top .name a { color: inherit; text-decoration: none; }
+.top nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.6rem; font-size: 0.93rem; }
+.top nav a { color: var(--muted); text-decoration: none; padding: 0.15rem 0; }
+.top nav a:hover { color: var(--ink); }
+.top nav a[aria-current="page"] { color: var(--ink); box-shadow: 0 2px 0 var(--series-1); }
+
+.foot {
+  margin-top: 5.5rem;
+  padding: 1.75rem 0 3rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.foot p { margin: 0; }
+.foot a { color: inherit; margin-left: 1.1rem; }
+.foot a:first-child { margin-left: 0; }
+
+
+/* 4. Header image, name and portrait ---------------------------------------- */
+
+/* The band across the top is assets/pattern.png, an illustration: a simulated
+   mixture separating into two phases. The file is a mask: it only says where the
+   colour goes, and the colours are --deep on --tint, so it follows dark mode. */
+.art { position: relative; height: 9.5rem; margin-top: 1.1rem; background: var(--tint); }
+.art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--deep);
+  -webkit-mask: url(pattern.png) center / cover no-repeat;
+  mask: url(pattern.png) center / cover no-repeat;
+}
+.art.slim { height: 2.6rem; }
+.art-note { margin: 0.45rem 0 0; padding-left: calc(var(--axis-x) + 0.55rem); font-size: 0.8rem; line-height: 1.4; text-align: right; text-wrap: balance; color: var(--muted); }
+.art-note a { color: inherit; }
+
+/* The home page is set on one vertical line (--axis-x). The portrait, the first
+   words of each job title and the years sit to its left, right-aligned. The
+   name, the bold word of each title, the employer and the table start on it. */
+.id, .role, .role h2, .role .meta {
+  display: grid;
+  grid-template-columns: var(--axis-x) minmax(0, 1fr);
+  column-gap: 0.55rem;
+}
+
+.id { align-items: start; margin-top: 0.9rem; }
+.id img {
+  justify-self: end;
+  display: block;
+  width: 10rem;
+  height: auto;
+  margin: -6.6rem 1.5rem 0 0;
+  border: 5px solid var(--bg);
+  border-radius: 6px;
+  position: relative;
+}
+.id h1 { font-size: clamp(2.4rem, 4.4vw, 3.1rem); font-weight: 700; line-height: 1.1; }
+.id .links { display: flex; flex-wrap: wrap; gap: 0.3rem 1.3rem; margin: 0.8rem 0 0; font-size: 0.95rem; }
+.id .about { max-width: 39rem; margin: 1.5rem 0 0; font-family: var(--font-serif); font-size: 1.16rem; line-height: 1.55; }
+
+
+/* 5. Home: the roles -------------------------------------------------------- */
+
+.record { margin-top: 2.6rem; border-top: 2px solid var(--ink); }
+
+.role { padding: 1.6rem 0 1.9rem; border-bottom: 1px solid var(--rule); }
+
+.role h2 { grid-column: 1 / -1; align-items: baseline; font-size: 1.62rem; font-weight: 400; line-height: 1.15; }
+.role h2 .q { grid-column: 1; text-align: right; white-space: nowrap; }
+.role h2 b { grid-column: 2; font-weight: 700; }
+
+.role .meta { grid-column: 1 / -1; align-items: baseline; margin: 0.3rem 0 0; font-size: 0.92rem; }
+.role .meta .when { grid-column: 1; text-align: right; font-variant-numeric: tabular-nums; }
+.role .meta .org { grid-column: 2; font-weight: 600; }
+
+.role .cells { grid-column: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 1.8rem; margin-top: 0.85rem; }
+.role .cells p { margin: 0; font-size: 0.94rem; line-height: 1.5; color: var(--ink-2); }
+.role .cells p b { font-weight: 700; color: var(--ink); }   /* Research / Built / Led */
+
+
+/* 6. Home: links to the other pages ---------------------------------------- */
+
+/* Four plain buttons in a row. Each whole button is a link: a light surface,
+   the page name in the link colour with an arrow, and one line about it. */
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.9rem; margin-top: 2.8rem; }
+.tile { display: block; padding: 0.7rem 0.95rem 0.85rem; border-radius: 6px; background: var(--tint); color: var(--ink); text-decoration: none; }
+.tile strong { display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; font-size: 1rem; font-weight: 600; color: var(--link); }
+.tile strong::after { content: "\2192"; font-weight: 400; transition: transform 0.15s; }
+.tile .d { display: block; margin-top: 0.2rem; font-size: 0.86rem; line-height: 1.4; }
+.tile:hover strong, .tile:focus-visible strong { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+.tile:hover strong::after { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) { .tile strong::after { transition: none; } }
+
+
+/* 7. Sections with a heading column ---------------------------------------- */
+
+.page-title { padding-top: 3.75rem; font-size: 2.2rem; }
+.page-lede { margin: 1rem 0 0; max-width: 42rem; font-size: 1.1rem; color: var(--ink-2); }
+
+.band {
+  display: grid;
+  grid-template-columns: var(--head-col) minmax(0, 1fr);
+  gap: var(--gap);
+  padding-top: 4.75rem;
+  scroll-margin-top: -2rem;
+}
+.band-head { position: sticky; top: 1.5rem; align-self: start; }
+.band-head h2 { font-size: 1.5rem; }
+.band-head p { margin: 0.5rem 0 0; font-size: 0.88rem; line-height: 1.45; color: var(--muted); }
+.band-head .org { margin-top: 0.55rem; font-size: 0.95rem; font-weight: 600; color: var(--ink); }
+.band-head .org + p { margin-top: 0; }
+
+/* The work page: one section per subject, several projects in each. */
+.item[id] { scroll-margin-top: 1.5rem; }
+.item + .item { margin-top: 3rem; }
+.item h3 { font-size: 1.3rem; }
+.item .meta { margin: 0.3rem 0 0.7rem; font-size: 0.88rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.item p, .item li { max-width: 43rem; color: var(--ink-2); }
+.item ul { margin: 0 0 1rem; padding-left: 1.15rem; }
+.item li { margin: 0 0 0.4rem; }
+.item li::marker { color: var(--muted); }
+.item .fig { margin: 1.5rem 0; max-width: 50rem; }
+.item .fig.narrow { max-width: 30rem; }
+.item .refs { font-size: 0.9rem; color: var(--muted); }
+
+.prose { max-width: 43rem; }
+.prose p { color: var(--ink-2); }
+.prose h3 { font-size: 1.15rem; margin: 2rem 0 0.6rem; }
+
+
+/* 8. Figures --------------------------------------------------------------- */
+
+.fig { margin: 0; }
+.fig figcaption { margin: 0 0 0.6rem; font-family: var(--font-sans); font-size: 0.84rem; font-weight: 600; line-height: 1.35; color: var(--ink); }
+.fig .src { margin: 0.6rem 0 0; font-family: var(--font-sans); font-size: 0.8rem; line-height: 1.45; color: var(--muted); max-width: none; }
+
+/* Horizontal bars. One row per <tr>: a label, then a bar with its value at the tip.
+   The bar's length is --v on the <i>, out of --max on the table (default 100).
+   The row with class "hl" takes the accent; the rest are grey. */
+.bars { width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 0.88rem; line-height: 1.3; }
+.bars th { width: 45%; padding: 0.4rem 0.9rem 0.4rem 0; text-align: left; font-weight: 400; color: var(--ink-2); vertical-align: middle; }
+.bars td { position: relative; padding: 0.4rem 0; border-left: 1px solid var(--axis); outline-offset: -1px; }
+.bars .t { display: flex; align-items: center; gap: 0.45rem; }
+.bars .t i {
+  display: block;
+  flex: none;
+  height: 14px;
+  min-width: 2px;
+  width: calc(var(--v) / var(--max, 100) * (100% - 5.6rem));
+  background: var(--mark);
+  border-radius: 0 4px 4px 0;
+}
+.bars tr.hl .t i { background: var(--series-1); }
+.bars .t b { font-weight: 600; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* Dots on a scale that does not start at zero. --v on the <span class="t"> is the
+   value; --min and --max on the table are the two ends of the scale, which the
+   last row prints. */
+.dots { width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 0.88rem; line-height: 1.3; }
+.dots th { width: 47%; padding: 0.42rem 0.9rem 0.42rem 0; text-align: left; font-weight: 400; color: var(--ink-2); vertical-align: middle; }
+.dots th small { display: block; font-size: 0.8rem; color: var(--muted); }
+.dots td { position: relative; padding: 0 3.4rem 0 0.4rem; outline-offset: -1px; }
+.dots .t { --x: calc((var(--v) - var(--min)) / (var(--max) - var(--min)) * 100%); position: relative; display: block; height: 2.3rem; }
+.dots .t::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--rule); }
+.dots .t i { position: absolute; left: var(--x); top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--mark); box-shadow: 0 0 0 2px var(--bg); }
+.dots .t b { position: absolute; left: calc(var(--x) + 0.75rem); top: 50%; transform: translateY(-50%); font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.dots tr.hl .t i { background: var(--series-1); }
+.dots tr.scale td { padding-top: 0.2rem; }
+.dots tr.scale .ends { display: flex; justify-content: space-between; padding-top: 0.3rem; border-top: 1px solid var(--axis); font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Hover and keyboard focus show the detail kept in data-tip. */
+[data-tip]:hover::after,
+[data-tip]:focus::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0.4rem;
+  bottom: calc(100% - 0.2rem);
+  z-index: 3;
+  width: max-content;
+  max-width: 17rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+/* The verification layers: a table with one row per layer, and a block on the
+   right for the test suite that covers all of them. */
+.verify { display: grid; grid-template-columns: minmax(0, 1fr) 13.5rem; }
+.layers { width: 100%; border-collapse: collapse; font-size: 0.9rem; line-height: 1.45; }
+.layers thead th, .verify .suite .h { padding: 0 1.2rem 0.5rem 0; text-align: left; font-size: 0.84rem; font-weight: 600; line-height: 1.45; border-bottom: 1px solid var(--axis); }
+.layers tbody th { width: 21%; padding: 0.85rem 1.2rem 0.85rem 0; text-align: left; vertical-align: top; font-family: var(--font-serif); font-size: 1.08rem; font-weight: 600; }
+.layers tbody td { padding: 0.85rem 1.2rem 0.85rem 0; vertical-align: top; color: var(--ink-2); }
+.layers tbody tr + tr th, .layers tbody tr + tr td { border-top: 1px solid var(--rule); }
+.verify .suite { display: flex; flex-direction: column; font-size: 0.9rem; line-height: 1.45; }
+.verify .suite .h { margin: 0; padding-left: 1.2rem; color: var(--ink); }
+.verify .suite div { flex: 1; padding: 0.85rem 0 0 1.2rem; border-left: 1px solid var(--axis); }
+.verify .suite div p { margin: 0 0 0.6rem; max-width: none; color: var(--ink-2); }
+
+/* Five separate simulations in a row, their labels, and a sketch under them.
+   Each picture is a mask, painted with the same two colours as the header band. */
+.fig.panels { max-width: 40rem; }
+.fig.panels .row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+.fig.panels .row span { position: relative; aspect-ratio: 1; background: var(--tint); }
+.fig.panels .row span::before { content: ""; position: absolute; inset: 0; background: var(--deep); -webkit-mask: var(--m) center / cover no-repeat; mask: var(--m) center / cover no-repeat; }
+.fig.panels .p1 { --m: url(fig/spinodal-1.png); }
+.fig.panels .p2 { --m: url(fig/spinodal-2.png); }
+.fig.panels .p3 { --m: url(fig/spinodal-3.png); }
+.fig.panels .p4 { --m: url(fig/spinodal-4.png); }
+.fig.panels .p5 { --m: url(fig/spinodal-5.png); }
+.fig.panels .ticks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin: 0.3rem 0 0.2rem; font-family: var(--font-sans); font-size: 0.8rem; text-align: center; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Inline SVG schematics take their colours from the tokens. */
+.schematic { display: block; width: 100%; height: auto; }
+.schematic .ax { stroke: var(--axis); stroke-width: 1; fill: none; }
+.schematic .ln { stroke: var(--series-1); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.schematic .wash { fill: var(--series-1); opacity: 0.1; }
+.schematic .cut { stroke: var(--axis); stroke-width: 1; }
+.schematic text { font-family: var(--font-sans); font-size: 11px; fill: var(--muted); }   /* the viewBox is 500 wide and drawn at up to 640 px */
+.schematic text.strong { fill: var(--ink-2); }
+
+
+/* 9. Lists ----------------------------------------------------------------- */
+
+.pubs { list-style: none; margin: 0; padding: 0; max-width: 47rem; }
+.pubs > li { margin: 0 0 1.15rem; }
+.pubs .title { display: block; font-weight: 600; line-height: 1.4; }
+.pubs .authors { display: block; color: var(--ink-2); }
+.pubs .venue { display: block; font-size: 0.88rem; color: var(--muted); }
+.pubs .about { display: block; margin-top: 0.2rem; font-size: 0.93rem; color: var(--ink-2); }
+
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows > li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0 1.25rem; margin: 0 0 1.2rem; }
+.rows .when { padding-top: 0.1em; font-size: 0.88rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rows p { margin: 0; }
+.rows .note { display: block; color: var(--muted); }
+.rows ul { margin: 0.4rem 0 0; padding-left: 1.1rem; list-style: disc; }
+.rows ul li { margin: 0 0 0.3rem; color: var(--ink-2); }
+.rows ul li::marker { color: var(--muted); }
+
+/* Rows whose left column is a count instead of a date. */
+.rows.counts .when { padding-top: 0; font-size: 1rem; font-weight: 600; color: var(--ink); }
+
+/* The CV page: plain headings, a wider date column. */
+.cv h2 { font-size: 1.4rem; margin: 3.25rem 0 1.1rem; }
+.cv .rows > li { grid-template-columns: 9.25rem minmax(0, 1fr); }
+.cv .pubs .authors { color: var(--ink); }
+.cv > p { max-width: 46rem; color: var(--ink-2); }
+.cv > p.no-print { margin-top: 0.9rem; font-size: 0.88rem; }
+.cv .rows > li > div, .cv .rows > li > p { max-width: 47rem; }
+.contact-line { margin: 0.35rem 0 0; font-size: 0.9rem; color: var(--muted); }
+
+/* An employer line in the CV: employer and title on the left, the place on the right. */
+.cv .hd { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 1.5rem; }
+.cv .hd .place { white-space: nowrap; }
+
+/* Label on the left, text on the right. */
+.pairs { margin: 0.35rem 0 0; }
+.pairs div { display: grid; grid-template-columns: 6.6rem minmax(0, 1fr); gap: 0 0.9rem; padding: 0.22rem 0; }
+.pairs dt { color: var(--muted); }
+.pairs dd { margin: 0; color: var(--ink-2); }
+.cv > .pairs { max-width: 47rem; }
+.cv > .pairs div { grid-template-columns: 9.25rem minmax(0, 1fr); gap: 0 1.25rem; }
+.cv > .pairs dt { color: var(--ink); font-weight: 600; }
+
+
+/* 10. Notes page ----------------------------------------------------------- */
+
+.notes { display: grid; grid-template-columns: var(--head-col) minmax(0, 41rem); gap: var(--gap); padding-top: 3.5rem; }
+
+.toc { position: sticky; top: 1.5rem; align-self: start; max-height: calc(100vh - 3rem); overflow: auto; font-size: 0.88rem; line-height: 1.35; }
+.toc ul { list-style: none; margin: 0; padding: 0; }
+.toc li { margin: 0 0 0.6rem; }
+.toc a { color: var(--muted); text-decoration: none; }
+.toc a:hover { color: var(--link); }
+
+article.note { scroll-margin-top: 1.5rem; }
+article.note + article.note { margin-top: 4.25rem; padding-top: 3.25rem; border-top: 1px solid var(--rule); }
+article.note h2 { font-size: 1.75rem; line-height: 1.18; }
+article.note .date { margin: 0.5rem 0 1.3rem; font-size: 0.86rem; color: var(--muted); }
+article.note p { font-family: var(--font-serif); font-size: 1.13rem; line-height: 1.62; }
+article.note .fig { margin: 1.75rem 0 1.9rem; }
+
+
+/* 11. Narrow screens ------------------------------------------------------- */
+
+@media (max-width: 66rem) {
+  :root { --gap: 2.25rem; --head-col: 11rem; --axis-x: 17.4rem; }
+  .role h2 { font-size: 1.4rem; }
+  .role .cells { column-gap: 1.3rem; }
+  .role .cells p { font-size: 0.9rem; }
+  .id img { width: 8.5rem; margin-right: 1.2rem; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .verify { grid-template-columns: 1fr; }
+  .verify .suite { margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px solid var(--axis); }
+  .verify .suite .h { padding: 0 0 0.25rem; border-bottom: 0; font-family: var(--font-serif); font-size: 1.08rem; }
+  .verify .suite div { padding: 0; border-left: 0; }
+}
+
+@media (max-width: 50rem) {
+  .wrap { padding: 0 1.2rem; }
+  .top nav { width: 100%; justify-content: space-between; gap: 0.25rem 0.6rem; font-size: 0.88rem; }
+
+  .art { height: 6rem; margin-top: 0.8rem; }
+  .art.slim { height: 1.8rem; }
+  .art-note { display: none; }
+  .id { grid-template-columns: 6rem minmax(0, 1fr); column-gap: 1rem; margin-top: 0.6rem; align-items: center; }
+  .id img { width: 6rem; margin: 0; border: 0; }
+  .id h1 { font-size: 1.9rem; }
+  .record { margin-top: 1.6rem; }
+  .role, .role h2 { display: block; }
+  .role { padding: 1.5rem 0 1.6rem; }
+  .role h2 { font-size: 1.45rem; }
+  .role h2 .q { white-space: normal; }
+  .role .meta { display: flex; flex-wrap: wrap; gap: 0 0.4rem; }
+  .role .meta .org { order: 1; }
+  .role .meta .when { order: 2; }
+  .role .meta .when::before { content: "\00b7\00a0"; }
+  .role .cells { display: block; margin-top: 0.7rem; }
+  .role .cells p { font-size: 0.97rem; }
+  .role .cells div + div { margin-top: 0.6rem; }
+
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; margin-top: 2.5rem; }
+  .id .about { grid-column: 1 / -1; margin-top: 1.1rem; font-size: 1.08rem; }
+  .id > div { display: contents; }
+  .id h1 { align-self: center; }
+  .id .links { grid-column: 1 / -1; margin-top: 0.9rem; }
+
+  .band, .notes { grid-template-columns: 1fr; gap: 1.2rem; padding-top: 3.5rem; }
+  .band-head, .toc { position: static; max-height: none; }
+  .toc { padding-bottom: 1.3rem; border-bottom: 1px solid var(--rule); }
+
+  .verify { grid-template-columns: 1fr; }
+  .layers thead { display: none; }
+  .layers, .layers tbody, .layers tr, .layers th, .layers td { display: block; width: auto; }
+  .layers tbody th { padding: 0.9rem 0 0.2rem; }
+  .layers tbody td { padding: 0 0 0.5rem; border-top: 0 !important; }
+  .layers tbody td::before { content: attr(data-h) ". "; font-weight: 600; color: var(--ink); }
+
+  .dots, .dots tbody, .dots tr, .dots th, .dots td { display: block; width: auto; }
+  .dots th { padding: 0.7rem 0 0; }
+  .dots td { padding: 0 3rem 0 0.4rem; }
+  .dots .t { height: 1.7rem; }
+  .dots tr.scale th { display: none; }
+
+  .rows > li, .cv .rows > li { grid-template-columns: 1fr; }
+  .pairs div, .cv > .pairs div { grid-template-columns: 1fr; }
+  .pairs dt { font-size: 0.86rem; }
+  .bars th { width: 44%; }
+  article.note h2 { font-size: 1.5rem; }
+  article.note p { font-size: 1.08rem; }
+  .foot a { margin-left: 0; margin-right: 1.1rem; }
+}
+
+
+/* 12. Print (the CV) ------------------------------------------------------- */
+
+@media print {
+  :root { --bg: #fff; --ink: #000; --ink-2: #1a1a1a; --muted: #3a3a3a; --link: #000; --rule: #bbb; }
+  @page { margin: 13mm 16mm; }
+  body { font-size: 9pt; line-height: 1.34; }
+  .wrap { max-width: none; padding: 0; }
+  .top { padding-top: 0; }
+  .top nav, .no-print, .foot, .art, .art-note { display: none; }
+  .top .name { font-size: 17pt; }
+  a { text-decoration: none; }
+  .page-title { display: none; }
+  .page-lede { margin-top: 6pt; font-size: 9.1pt; max-width: none; }
+  .cv h2 { font-size: 11.5pt; margin: 8pt 0 3.5pt; break-after: avoid; }
+  .rows > li, .pubs > li { margin-bottom: 3.8pt; }
+  .rows > li, .cv .rows > li { grid-template-columns: 7.6rem minmax(0, 1fr); }
+  .cv .rows > li > div, .cv .rows > li > p, .cv > p, .pubs { max-width: none; }
+  .contact-line { font-size: 8.5pt; }
+  .pubs > li, .rows ul li, .rows > li > p { break-inside: avoid; }
+  .rows ul li { margin-bottom: 1.5pt; }
+  .rows .when, .pubs .venue { font-size: 8.5pt; }
+  .pubs .authors, .pubs .venue { display: inline; }
+  .pubs > li { margin-bottom: 3.4pt; }
+  /* The technical list prints as run-in paragraphs, a little smaller, to save room. */
+  .cv > .pairs { max-width: none; font-size: 8.3pt; line-height: 1.3; }
+  .cv > .pairs div { display: block; padding: 0.8pt 0; break-inside: avoid; }
+  .cv > .pairs dt, .cv > .pairs dd { display: inline; }
+  .cv > .pairs dt::after { content: ": "; }
+  .cv .hd { flex-wrap: nowrap; break-after: avoid; }
+}

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marcin Abram</title>
+  <meta name="description" content="Marcin Abram. Member of Technical Staff, Research, at FirstPrinciples. Previously at IBM, the University of Southern California, and Fetch.ai. PhD in physics.">
+  <link rel="canonical" href="https://marcinabram.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Marcin Abram">
+  <meta property="og:description" content="Member of Technical Staff, Research, at FirstPrinciples. Previously at IBM, the University of Southern California, and Fetch.ai.">
+  <meta property="og:url" content="https://marcinabram.github.io/">
+  <meta property="og:image" content="https://marcinabram.github.io/assets/portrait.jpg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <!-- Google tag. It loads only on the live site, so local previews are not counted.
+       If the site moves to its own domain, change the host name below on every page. -->
+  <script>
+    if (location.hostname === 'marcinabram.github.io') {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-KKSZ3LXK';
+      document.head.appendChild(tag);
+    }
+  </script>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top home">
+    <nav aria-label="Site">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="publications.html">Publications</a>
+      <a href="notes.html">Notes</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+</div>
+
+<!-- The band across the page. The image is assets/pattern.png. -->
+<div class="art" role="img" aria-label="Illustration: a simulated mixture separating into two phases. The pattern changes from droplets on the left, to a labyrinth in the middle, to inverted droplets on the right."></div>
+
+<div class="wrap">
+
+  <main>
+
+  <p class="art-note">
+    Illustration: How alloy microstructure changes during phase separation.<br>See my work on
+    <a href="projects.html#transitions">detecting such transitions without labels</a>.
+  </p>
+
+  <section class="id">
+    <img src="assets/portrait.jpg" width="640" height="640" alt="Portrait of Marcin Abram">
+    <div>
+      <h1>Marcin Abram</h1>
+      <p class="links">
+        <a href="mailto:abram.mj@gmail.com">abram.mj@gmail.com</a>
+        <a href="https://scholar.google.com/citations?user=YGo2wbYAAAAJ&amp;hl=en">Google Scholar</a>
+        <a href="https://github.com/marcinabram">GitHub</a>
+        <a href="https://www.linkedin.com/in/marabram/">LinkedIn</a>
+        <a href="cv.html">CV</a>
+      </p>
+      <p class="about">
+        I'm a theoretical physicist, ML engineer, AI researcher, and systems architect.
+        I work at FirstPrinciples, a Canadian AI lab, building agentic systems to advance fundamental research.
+        I specialize in multi-agent systems, LLM reliability, and scientific applications of both classical ML and agentic AI.
+        Currently, I am building an evaluation harness for our scientific reasoning platform and investigating failure modes in LLM-assisted generation.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================== Roles ==============================
+       One <article class="role"> per job title, newest first. Each has:
+
+         <h2>      the title, split in two: the first words in <span class="q">,
+                   the word to stress in <b>. The <b> words line up one under
+                   another on a wide screen.
+         .meta     the years and the employer
+         .cells    three short texts. Each starts with its label in <b>:
+                   Research / Built / Led. Keep each to one or two sentences.
+
+       If a new title has a longer first part than "Member of Technical Staff,",
+       make --axis-x larger in assets/site.css (two places: the default and the
+       one for medium screens).                                               -->
+
+  <section class="record" aria-label="Experience">
+
+    <article class="role">
+      <h2><span class="q">Member of Technical Staff,</span> <b>Research</b></h2>
+      <p class="meta"><span class="when">Since 2026</span> <span class="org">FirstPrinciples</span></p>
+      <div class="cells">
+        <div><p><b>Research</b> on how frontier language models and agents fail on
+          expert-level scientific work, how we can detect those failures, and how
+          to build more reliable agentic systems.</p></div>
+        <div><p><b>Built</b> an evaluation harness that verifies the reasoning and output of agentic scientific systems,
+          with symbolic, numerical, and conceptual checks.</p></div>
+        <div><p><b>Led</b> roadmap planning for the research unit and assumed the role of architect for non-platform delivery,
+          including verification as a service.</p></div>
+      </div>
+    </article>
+
+    <article class="role">
+      <h2><span class="q">Senior Technical Solution</span> <b>Architect</b></h2>
+      <p class="meta"><span class="when">2024 – 2026</span> <span class="org">IBM</span></p>
+      <div class="cells">
+        <div><p><b>Research</b> on distinct failure modes of enterprise GenAI systems. Co-developed IBM's roadmap for
+          next-gen agentic AI development.</p></div>
+        <div><p><b>Built</b> several PoCs and MVPs for enterprise and government
+          clients. In one of the engagements, proposed an agentic retrieval system that cut hallucinations by over
+          80%.</p></div>
+        <div><p><b>Led</b> the Data and AI group in my unit as technical lead. Led technical
+          discussions with client executives. Organized both internal and client-facing workshops.</p></div>
+      </div>
+    </article>
+
+    <article class="role">
+      <h2><span class="q">Visiting Assistant</span> <b>Professor</b></h2>
+      <p class="meta"><span class="when">2023 – 2024</span> <span class="org">University of Southern California</span></p>
+      <div class="cells">
+        <div><p><b>Research</b> on scientific machine learning and the role of noise in the quality of LLM-assisted generation.</p></div>
+        <div><p><b>Built</b> the curriculum of a new graduate program that combines
+          physics and AI.</p></div>
+        <div><p><b>Led</b> the Machine Learning for the Natural Sciences group. Supervised three PhD
+          theses and eight capstone projects.</p></div>
+      </div>
+    </article>
+
+    <article class="role">
+      <h2><span class="q">Postdoctoral</span> <b>Scholar</b></h2>
+      <p class="meta"><span class="when">2020 – 2023</span> <span class="org">University of Southern California</span></p>
+      <div class="cells">
+        <div><p><b>Research</b> on self-supervised detection of microstructural transitions in materials, and on
+          privacy-preserving federated training that is robust to data poisoning.</p></div>
+        <div><p><b>Built</b> an MVP for Sandia National Laboratories, assisting with the development of
+          a system for informing the synthesis of new functional materials.</p></div>
+        <div><p><b>Led</b> the creation of the Machine Learning for the Natural Sciences group. Taught undergraduate physics
+          and graduate machine learning classes.</p></div>
+      </div>
+    </article>
+
+    <article class="role">
+      <h2><span class="q">Lead</span> <b>Research Scientist</b></h2>
+      <p class="meta"><span class="when">2018 – 2020</span> <span class="org">Fetch.ai</span></p>
+      <div class="cells">
+        <div><p><b>Research</b> on novel consensus algorithms and the role of machine learning in
+          decentralized multi-agent systems. Investigated novel attack vectors and the role of
+          architecture in mitigating their impact.</p></div>
+        <div><p><b>Built</b> test suites, benchmarks, and attack simulations to evaluate the performance of the consensus protocol.</p></div>
+        <div><p><b>Led</b> the redesign of the main consensus protocol. Technical lead through a series of pivots.
+          Led the development of a patented method for collective learning in decentralized systems.</p></div>
+      </div>
+    </article>
+
+    <article class="role">
+      <h2><span class="q">Machine Learning</span> <b>Engineer</b></h2>
+      <p class="meta"><span class="when">2016 – 2018</span> <span class="org">TypeScore</span></p>
+      <div class="cells">
+        <div><p><b>Research</b> on developing embeddings from highly structured data and applying NLP-assisted classification in highly regulated industries.</p></div>
+        <div><p><b>Built</b> an end-to-end machine learning pipeline (from data collection to training) as a founding engineer in a lean team, writing a large part of the startup's codebase.
+          Our results briefly established a new SOTA in the field of credit risk assessment for the SME market in the UK.</p></div>
+        <div><p><b>Led</b> the data collection, model training, and model evaluation effort.</p></div>
+      </div>
+    </article>
+
+    <article class="role">
+      <h2><span class="q">Theoretical</span> <b>Physicist</b></h2>
+      <p class="meta"><span class="when">2011 – 2016</span> <span class="org">Jagiellonian University, PhD</span></p>
+      <div class="cells">
+        <div><p><b>Research</b> on novel approximate methods for modeling superconducting and magnetic quantum systems.</p></div>
+        <div><p><b>Built</b> high-performance simulation code in C++.</p></div>
+        <div><p><b>Led</b> an outreach program for gifted high-school students preparing for the physics olympiad. Taught statistical physics classes.</p></div>
+      </div>
+    </article>
+
+  </section>
+
+
+  <!-- ============================== Other pages ==============================
+       Four buttons; each whole button is a link.                              -->
+
+  <nav class="tiles" aria-label="More on this site">
+    <a class="tile" href="projects.html">
+      <strong>Projects</strong>
+      <span class="d">Verification, retrieval, multi-agent trust, machine learning for physics.</span>
+    </a>
+    <a class="tile" href="publications.html">
+      <strong>Publications</strong>
+      <span class="d">Seventeen papers and a patent.</span>
+    </a>
+    <a class="tile" href="notes.html">
+      <strong>Notes</strong>
+      <span class="d">Short findings from my experiments with LLM judges and agents.</span>
+    </a>
+    <a class="tile" href="teaching.html">
+      <strong>Teaching</strong>
+      <span class="d">Courses, workshops, and my roles as a mentor and scientific advisor.</span>
+    </a>
+  </nav>
+
+  </main>
+
+  <footer class="foot">
+    <p>Marcin Abram · Los Angeles · Updated November 2026</p>
+    <p>
+      <a href="mailto:abram.mj@gmail.com">abram.mj@gmail.com</a>
+      <a href="https://scholar.google.com/citations?user=YGo2wbYAAAAJ&amp;hl=en">Google Scholar</a>
+      <a href="https://github.com/marcinabram">GitHub</a>
+      <a href="https://www.linkedin.com/in/marabram/">LinkedIn</a>
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

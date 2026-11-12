@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects · Marcin Abram</title>
+  <meta name="description" content="Selected projects of Marcin Abram: verification and evaluation of AI systems, retrieval and context, multi-agent systems and trust, machine learning for physics, and machine learning in production.">
+  <link rel="canonical" href="https://marcinabram.github.io/projects.html">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="assets/site.css">
+  <!-- Google tag. It loads only on the live site, so local previews are not counted.
+       If the site moves to its own domain, change the host name below on every page. -->
+  <script>
+    if (location.hostname === 'marcinabram.github.io') {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-KKSZ3LXK';
+      document.head.appendChild(tag);
+    }
+  </script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="name"><a href="index.html">Marcin Abram</a></p>
+    <nav aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="publications.html">Publications</a>
+      <a href="notes.html">Notes</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+</div>
+
+<div class="art slim" aria-hidden="true"></div>
+
+<div class="wrap">
+  <main>
+
+  <h1 class="page-title">Selected projects</h1>
+  <p class="page-lede">
+    A selection of completed and current projects, grouped by subject.
+  </p>
+
+  <!--
+    One <section class="band"> per subject. Inside it, one <article class="item">
+    per project, the most recent first:
+      <h3>          what it was
+      .meta         where and when
+      <p>           the text
+      .refs         optional: papers and links
+    The list of jobs is on the home page and in cv.html; this page is by subject.
+  -->
+
+
+  <!-- ============================== Verification ============================== -->
+
+  <section class="band" id="verification">
+    <div class="band-head">
+      <h2>Verification and evaluation</h2>
+    </div>
+
+    <div class="band-body">
+
+      <article class="item">
+        <h3>Verifying the work of an AI agent</h3>
+        <p class="meta">FirstPrinciples · 2026</p>
+        <p>
+          FirstPrinciples builds AI agents that assist with research in physics. An agent of
+          this kind reads the literature, plans a study, derives results, writes and runs
+          code, and reports back.
+        </p>
+        <p>
+          With several colleagues, I built a hybrid sub-system that verifies what the agent produces.
+          It combines symbolic (non-LLM-based), numerical, and conceptual checks.
+        </p>
+
+        <figure class="fig verify">
+          <table class="layers">
+            <thead>
+              <tr>
+                <th scope="col">Layer</th>
+                <th scope="col">How the verdict is reached</th>
+                <th scope="col">What it catches</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Symbolic</th>
+                <td data-h="Verdict">Each step is checked symbolically and deterministically. No language model takes part in the verdict.</td>
+                <td data-h="Catches">A dropped factor, a wrong sign, units that do not match.</td>
+              </tr>
+              <tr>
+                <th scope="row">Numerical</th>
+                <td data-h="Verdict">A language model proposes numerical tests, such as a known limit or an independent recomputation. The tests are executed and the result decides.</td>
+                <td data-h="Catches">Code that runs without complaint and returns a plausible, wrong number.</td>
+              </tr>
+              <tr>
+                <th scope="row">Conceptual</th>
+                <td data-h="Verdict">Agents built on models from different vendors review the substance of the work.</td>
+                <td data-h="Catches">Correct mathematics on a wrong premise. An approximation used outside its range.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="suite">
+            <p class="h">Test suite</p>
+            <div>
+              <p>Cases with a known answer, work with one or many planted errors, twins (the same work
+                with and without a planted error), public and private benchmarks, adversarial inputs, etc.</p>
+            </div>
+          </div>
+        </figure>
+
+        <p>
+          The work also includes a custom ledger, translation layers, deep integration with our scientific platform, a watchdog system,
+          repair loops, and a research toolkit for ablation studies.
+        </p>
+      </article>
+
+      <article class="item">
+        <h3>Measuring where frontier models fail</h3>
+        <p class="meta">FirstPrinciples · 2026</p>
+        <p>In my work, I have investigated how frontier language models and agents fail on expert-level scientific work, and how we can detect those failures.
+          Among other things, I have developed experiments to test:
+        </p>
+        <ul>
+          <li>how a model chooses between competing descriptions of the same problem, and
+            whether that choice is calibrated;</li>
+          <li>whether a valid objection survives several turns of conversation with a user
+            who disagrees;</li>
+          <li>whether an error made in one step of an agent is repaired in the next step or
+            carried forward;</li>
+          <li>how far LLM judges can be trusted, alone and in panels.</li>
+        </ul>
+        <p>
+          The findings of those experiments showed us how to build a robust verification harness and make our product more reliable.
+          Some of the general findings that I can share are written up in the <a href="notes.html">notes</a> section.
+        </p>
+      </article>
+
+      <article class="item">
+        <h3>Evaluation beyond one accuracy number</h3>
+        <p class="meta">IBM · 2024 – 2026</p>
+        <p>
+          At IBM, my main role was to assist in the development of non-standard MVPs that went beyond
+          the scope of a typical engagement. Another frequent task was to
+          evaluate a generative-AI system that did not
+          behave as expected. In one such engagement, I built an evaluation framework that covers multi-turn
+          use as well as perturbed and adversarial inputs.
+          This substantially reduced the time to market of the MVPs.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ============================== Retrieval ============================== -->
+
+  <section class="band" id="retrieval">
+    <div class="band-head">
+      <h2>Retrieval and context</h2>
+    </div>
+
+    <div class="band-body">
+
+      <article class="item">
+        <h3>A retrieval system that kept inventing answers</h3>
+        <p class="meta">IBM · 2024 – 2025</p>
+        <p>
+          In one of my engagements, I assisted a leading European car maker in assessing its question-answering system.
+          The system, built on standard retrieval-augmented generation (RAG) pipelines, kept hallucinating answers.
+          The root cause was the structure of the client's documents and their domain language. I documented the
+          failure and designed an agentic RAG system that reduced hallucinations by over 80% in the client's trial.
+          This saved the engagement, which the client was happy to extend substantially. In addition,
+          we made the framework I proposed reusable across a few engagements, and I passed it to another team
+          to turn it into an official asset that streamlines similar work.
+        </p>
+      </article>
+
+      <article class="item">
+        <h3>When a more relevant context does not help</h3>
+        <p class="meta">University of Southern California · 2023 – 2024</p>
+        <p>
+          With a group of students, I measured how the answers of a language model change
+          with the relevance of the context it is given. It turned out that the quality of the answer does not
+          grow monotonically with the measured relevance. This means that a context closely aligned with the topic does not
+          always help more than a loosely related one, especially when the question is open-ended
+          or novel. In addition, the structure of the context might matter more than what the context contains, especially for easy and moderately hard questions.
+        </p>
+        <p class="refs">
+          <a href="https://arxiv.org/abs/2312.07069">arXiv:2312.07069</a>,
+          <a href="https://arxiv.org/abs/2407.02028">arXiv:2407.02028</a>
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ============================== Trust ============================== -->
+
+  <section class="band" id="trust">
+    <div class="band-head">
+      <h2>Multi-agent systems and trust</h2>
+    </div>
+
+    <div class="band-body">
+
+      <article class="item">
+        <h3>A roadmap for the next generation of agentic AI</h3>
+        <p class="meta">IBM · 2025</p>
+        <p>
+          I was a member of a small cross-division group, led by IBM's chief scientist,
+          that helped create the company's roadmap for the next-gen agentic AI development cycle.
+          I contributed an analysis of
+          where current multi-agent systems fall short, and research on self-adapting and self-improving agent loops.
+        </p>
+      </article>
+
+      <article class="item">
+        <h3>Training a model together without sharing data</h3>
+        <p class="meta">University of Southern California · 2022, and Fetch.ai · 2020</p>
+        <p>
+          The same question came up at two employers: how can parties that do not trust
+          each other train a model together? At Fetch.ai, we designed a system in which groups of nodes
+          train models jointly without sharing their data and coordinate through a ledger.
+          This concept was novel enough to earn us a patent. At USC, with colleagues from the Information Sciences Institute,
+          I worked on privacy-preserving federated training protocols and added security mechanisms that make them more robust to data poisoning attacks.
+        </p>
+        <p class="refs">
+          <a href="https://patents.google.com/patent/US20230316127A1/en">US Patent 12,749,011</a>,
+          <a href="https://arxiv.org/abs/2205.01184">arXiv:2205.01184</a>
+        </p>
+      </article>
+
+      <article class="item">
+        <h3>A protocol redesigned around its attacks</h3>
+        <p class="meta">Fetch.ai · 2018 – 2020</p>
+        <p>
+          Fetch.ai was building a network in which autonomous software agents trade and
+          coordinate without a central operator. I joined with no background in blockchains.
+          Three months later I had found a critical flaw in the design of the main protocol,
+          and I was asked to lead the work on a solution.
+        </p>
+        <p>
+          Finding myself in that new role, I first systematically catalogued the ways in which a
+          participant could attack or game the protocol. This included attack vectors that had
+          not been described before. I then designed mechanisms that stay correct when some of
+          the participants misbehave. Next, I built the test suites, benchmarks, and attack
+          simulations, and then experimental implementations and proofs of concept. Finally, I led the redesign of the main protocol.
+          We proposed a novel protocol, based on a swarm of agents communicating through a DAG-style ledger,
+          in which no single participant decides the content of a block.
+        </p>
+        <p class="refs">
+          <a href="https://arxiv.org/abs/2006.05390">arXiv:2006.05390</a>, presented at
+          Tokenomics 2019
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ============================== Physics ============================== -->
+
+  <section class="band" id="physics">
+    <div class="band-head">
+      <h2>Machine learning for physics</h2>
+    </div>
+
+    <div class="band-body">
+
+      <article class="item" id="transitions">
+        <h3>Finding transitions in pattern-forming processes without labels</h3>
+        <p class="meta">University of Southern California, with Sandia National Laboratories · 2021 – 2022</p>
+        <p>
+          The microstructure of a material depends on how it was made, and it can change
+          character when a process parameter crosses some value. Usually there are no
+          labels that say where one regime ends and the next begins. I proposed a
+          self-supervised method that finds those boundaries from images alone, without human annotations or any other labels: a network
+          learns to predict the process parameters from an image of the microstructure,
+          and the uncertainty of its prediction changes where the microstructure changes.
+          We tested it on two simulated processes: spinodal decomposition of a two-phase
+          mixture, and the growth of thin alloy films by physical vapor deposition.
+        </p>
+
+        <figure class="fig panels">
+          <div class="row" role="img" aria-label="Five simulated microstructures. As the share of the dark phase grows from 23% to 76%, the pattern changes from dark droplets, to a labyrinth, to light droplets.">
+            <span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span>
+          </div>
+          <div class="ticks" aria-hidden="true">
+            <span>23%</span><span>34%</span><span>50%</span><span>65%</span><span>76%</span>
+          </div>
+          <svg class="schematic" viewBox="0 0 500 132" role="img" aria-label="Sketch: the uncertainty of the network's prediction, plotted against the share of the dark phase, rises at the two places where the pattern above changes character.">
+            <path class="wash" d="M0 100 C 80 98, 150 96, 172 78 C 184 66, 190 28, 200 28 C 210 28, 216 70, 228 84 C 240 94, 258 94, 270 84 C 282 72, 290 40, 300 40 C 310 40, 318 74, 330 86 C 350 98, 420 100, 500 100 L 500 104 L 0 104 Z"/>
+            <line class="cut" x1="200" y1="4" x2="200" y2="104"/>
+            <line class="cut" x1="300" y1="4" x2="300" y2="104"/>
+            <path class="ln" d="M0 100 C 80 98, 150 96, 172 78 C 184 66, 190 28, 200 28 C 210 28, 216 70, 228 84 C 240 94, 258 94, 270 84 C 282 72, 290 40, 300 40 C 310 40, 318 74, 330 86 C 350 98, 420 100, 500 100"/>
+            <path class="ax" d="M0.5 4 V104 H500"/>
+            <text x="8" y="16">uncertainty of the prediction</text>
+            <text x="250" y="126" text-anchor="middle">share of the dark phase</text>
+          </svg>
+          <p class="src">Top: spinodal decomposition at five compositions. Each picture is a separate simulation that I ran for this page with the Cahn–Hilliard equation. Bottom: a sketch of what the method returns, not data. The pictures only illustrate the idea; the paper has its own simulations and results for both processes.</p>
+        </figure>
+
+        <p class="refs">
+          <a href="https://doi.org/10.1038/s41524-022-00889-2">npj Computational Materials 8, 205 (2022)</a>
+          (Nature Portfolio), first author. Supported by a sponsored research award from Sandia National Laboratories.
+        </p>
+      </article>
+
+      <article class="item">
+        <h3>Neural networks that emulate quantum dynamics</h3>
+        <p class="meta">University of Southern California · 2020 – 2022</p>
+        <p>
+          I directed a group of five students that trained a neural network to emulate the dynamics
+          of a quantum wave packet, and asked how far such an emulator can be trusted outside
+          the range it was trained on. Trained on a curriculum of simple examples, it
+          generalizes to wave packets and potentials it has not seen.
+        </p>
+        <p class="refs">
+          <a href="https://doi.org/10.3389/fmats.2022.1060744">Frontiers in Materials 9, 1060744 (2023)</a>
+        </p>
+      </article>
+
+      <article class="item">
+        <h3>Strongly correlated quantum materials</h3>
+        <p class="meta">Jagiellonian University · 2011 – 2016</p>
+        <p>
+          My PhD. In these materials the electrons interact too strongly for the standard
+          approximations to hold, and a large part of the work is to find out where a method
+          can still be trusted. I studied unconventional superconductivity and its
+          coexistence with magnetism, and the phase transitions of the heavy-fermion
+          compound UGe<sub>2</sub>, and wrote the numerical methods and the high-performance
+          code in C++ and Python. I published seven peer-reviewed papers.
+        </p>
+        <p class="refs">
+          <a href="publications.html#physics">The papers</a>
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ============================== Production ============================== -->
+
+  <section class="band" id="production">
+    <div class="band-head">
+      <h2>Machine learning in production</h2>
+    </div>
+
+    <div class="band-body">
+
+      <article class="item">
+        <h3>Prototypes and first products for enterprise clients</h3>
+        <p class="meta">IBM · 2024 – 2026</p>
+        <p>
+          Architectures, proofs of concept, and minimum viable products for clients in
+          advertising and government. One of them was the core logic of an explainable-AI engine inside
+          an analytics platform for an advertising agency. I was the technical lead of the
+          Data and AI group in my unit, led the technical discussions with client
+          executives, and ran multi-day workshops for client engineers.
+        </p>
+      </article>
+
+      <article class="item">
+        <h3>A credit score from heterogeneous data</h3>
+        <p class="meta">TypeScore · 2016 – 2018</p>
+        <p>
+          TypeScore was a fintech startup that scored the credit risk of businesses from a
+          wide variety of sources, structured and unstructured. Data of this kind is never
+          complete and never consistent, and the models had to stay robust on it. I was a
+          founding engineer in a small, lean team and wrote a large part of the codebase myself. We built the ML platform from scratch: data pipelines, NLP risk
+          models, training and retraining, CI/CD, and deployment on Google Cloud. I owned the
+          pipeline in production. The models were behind the company's main product, the
+          first free credit score for businesses in the United Kingdom.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="foot">
+    <p>Marcin Abram · Los Angeles · Updated November 2026</p>
+    <p>
+      <a href="mailto:abram.mj@gmail.com">abram.mj@gmail.com</a>
+      <a href="https://scholar.google.com/citations?user=YGo2wbYAAAAJ&amp;hl=en">Google Scholar</a>
+      <a href="https://github.com/marcinabram">GitHub</a>
+      <a href="https://www.linkedin.com/in/marabram/">LinkedIn</a>
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>
